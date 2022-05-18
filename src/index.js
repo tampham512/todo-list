@@ -8,6 +8,8 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import TodoList from "./pages/TodoList";
+import { ContextProvider } from "./contextApp";
+import ShowTodoList from "./pages/ShowTodoList";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -23,15 +25,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
+  <ContextProvider>
     <GlobalStyle></GlobalStyle>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/todo-list" element={<TodoList />}></Route>
+        <Route path="/show-todo-list" element={<ShowTodoList />}></Route>
       </Routes>
     </BrowserRouter>
-  </>
+  </ContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
