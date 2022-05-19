@@ -1,16 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { MyContext } from "../../contextApp";
 
 import Table from "../Table";
 
-const TodoListUser = ({ userId = "12" }) => {
+const TodoListUser = ({ userId = "" }) => {
   const [todoList] = useContext(MyContext);
-  const todoListUser = [];
-  todoList.forEach((object) => {
-    if (object.userId === userId) todoListUser.push({ ...object });
-  });
-  console.log(todoListUser);
+  const [todoListUser, setTodoListUser] = useState([]);
+
+  useEffect(() => {
+    let newTodoListUser = [];
+    todoList.forEach((object) => {
+      if (object.userId === userId) newTodoListUser.push({ ...object });
+    });
+
+    setTodoListUser([...newTodoListUser]);
+  }, [userId]);
+
   const columns = [
     {
       title: "Number",
