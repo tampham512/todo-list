@@ -11,4 +11,5 @@ export const TodoFormStyle = styled.div`
 `;
 export const TodoListStyle = styled.div`
   flex: 2;
+  margin-top: 10px;
 `;
