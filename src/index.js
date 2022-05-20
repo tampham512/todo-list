@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ContextProvider>
+  <>
     <GlobalStyle></GlobalStyle>
     <BrowserRouter>
       <Routes>
@@ -34,7 +34,7 @@ root.render(
         <Route path="/show-todo-list" element={<ShowTodoListUser />}></Route>
       </Routes>
     </BrowserRouter>
-  </ContextProvider>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

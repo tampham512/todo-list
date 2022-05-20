@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { MyContext } from "../../contextApp";
+import { ToDoListContext } from "../../contextApp";
 
 import Table from "../../components/Table";
 
 import Button from "../../components/Button";
 
 const TodoList = ({ handleEdit }) => {
-  const [todoList, setTodoList] = useContext(MyContext);
+  const [todoList, setTodoList] = useContext(ToDoListContext);
 
   const handleDelete = (index) => {
     let newTodoList = todoList;

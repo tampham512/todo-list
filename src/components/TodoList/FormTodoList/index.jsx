@@ -1,13 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
-
-import { MyContext } from "../../contextApp";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import Select from "../../../components/Select";
+import { ToDoListContext } from "../../../contextApp";
 
 import { useFormik } from "formik";
-
 import * as yup from "yup";
 
 const options = [
@@ -24,8 +22,8 @@ const validationSchema = yup.object({
     .nullable("Vui lòng chọn Status"),
 });
 
-const Form = ({ isEdit, indexEdit, handleSubmit }) => {
-  const [todoList, setTodoList] = useContext(MyContext);
+const FormTodoList = ({ isEdit, indexEdit, handleSubmit }) => {
+  const [todoList, setTodoList] = useContext(ToDoListContext);
 
   const [isEditForm, setIsEditForm] = useState(false);
   const [indexEditForm, setIndexEditForm] = useState(null);
@@ -52,24 +50,22 @@ const Form = ({ isEdit, indexEdit, handleSubmit }) => {
     validationSchema: validationSchema,
 
     onSubmit: (values) => {
-      const todoListNew = todoList;
       if (isEditForm) {
+        const todoListNew = todoList;
         const todoListNewUpdate = todoListNew.map((object, index) => {
           if (index === indexEdit) {
             return {
               ...object,
               title: values.title,
-
               status: values.status,
             };
           }
           return object;
         });
-
         setIsEditForm(false);
         setTodoList([...todoListNewUpdate]);
       } else {
-        setTodoList([...todoListNew, { ...values }]);
+        setTodoList((prev) => [...prev, { ...values }]);
       }
       handleSubmit();
       formik.setFieldValue("title", "");
@@ -113,4 +109,4 @@ const Form = ({ isEdit, indexEdit, handleSubmit }) => {
   );
 };
 
-export default Form;
+export default FormTodoList;

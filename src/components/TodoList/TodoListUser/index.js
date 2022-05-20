@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import { MyContext } from "../../contextApp";
+import { MyContext } from "../../../contextApp";
 
-import Table from "../Table";
+import Table from "../../Table";
 
-const TodoListUser = ({ nameTodoUser }) => {
+const TodoListUser = () => {
   const [todoList] = useContext(MyContext);
 
   const columns = [
@@ -30,8 +30,8 @@ const TodoListUser = ({ nameTodoUser }) => {
   ];
   return (
     <>
-      <h2>{nameTodoUser}</h2>
-      <Table columns={columns} dataSource={todoList} pagination={false} />;
+      <h2>{todoList.user}</h2>
+      <Table columns={columns} dataSource={todoList.task} pagination={false} />
     </>
   );
 };
