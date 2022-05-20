@@ -7,9 +7,9 @@ import App from "./App";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import TodoList from "./pages/TodoList";
 import { ContextProvider } from "./contextApp";
-import ShowTodoList from "./pages/ShowTodoList";
+import ShowTodoListUser from "./pages/ShowTodoListUser";
+import TodoListGuide from "./pages/TodoListGuide";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -30,8 +30,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="/todo-list" element={<TodoList />}></Route>
-        <Route path="/show-todo-list" element={<ShowTodoList />}></Route>
+        <Route path="/todo-list" element={<TodoListGuide />}></Route>
+        <Route path="/show-todo-list" element={<ShowTodoListUser />}></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>
