@@ -51,19 +51,19 @@ const FormTodoList = ({ isEdit, indexEdit, handleSubmit }) => {
 
     onSubmit: (values) => {
       if (isEditForm) {
-        const todoListNew = todoList;
-        const todoListNewUpdate = todoListNew.map((object, index) => {
-          if (index === indexEdit) {
-            return {
-              ...object,
-              title: values.title,
-              status: values.status,
-            };
-          }
-          return object;
+        setTodoList((prev) => {
+          const todoListNewUpdate = prev.map((object, index) => {
+            if (index === indexEdit) {
+              return {
+                ...object,
+                title: values.title,
+                status: values.status,
+              };
+            }
+            return object;
+          });
+          return todoListNewUpdate;
         });
-        setIsEditForm(false);
-        setTodoList([...todoListNewUpdate]);
       } else {
         setTodoList((prev) => [...prev, { ...values }]);
       }
